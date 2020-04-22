@@ -4,13 +4,9 @@ const plus = document.getElementById('plus');
 const heart = document.getElementById('heart');
 const counter = document.getElementById('counter');
 const likes = document.getElementById('likes')
-const subComment = document.getElementById('comment-form');
-const allLikes = [];
-
 document.addEventListener("DOMContentLoaded", () => {
     // your code here
-    timer = setInterval(incrementCounter, 1000);
-    subComment.addEventListener('submit', addComment);
+    timer = setInterval(incrementCounter, 10000);
 });
 
 function incrementCounter() {
@@ -50,29 +46,20 @@ function decrementTimer(event) {
     counter.innerText--
 }
 
-
 function addLike(event) {
-    allLikes.push(counter.innerText);
-    let qtyLikes = allLikes.filter(num => num === counter.innerText).length; 
-
-    if (qtyLikes < 2) {
-        let currentLike = document.createElement('li');
-        currentLike.id = counter.innerText;
-        currentLike.innerText = `${counter.innerText} has been liked ${qtyLikes} times`;
-        likes.appendChild(currentLike);
-    } else {
-        let currentLike = document.getElementById(counter.innerText);
-        currentLike.innerText = `${counter.innerText} has been liked ${qtyLikes} times`;
+    let likeCounter = 0
+    let likedNum = counter.innerText
+    console.log('bloop');
+    
+    like = document.createElement('li')
+    if (counter.innerText ==  && likeCounter == 0) {
+        likeCounter = 1
+        like.innerText = `The Number ${counter.innerText} has been liked ${likeCounter} times`
+    } else if (likeCounter != 0) {
+        likeCounter ++
+        like.innerText = `The Number ${counter.innerText} has been liked ${likeCounter} times`        
     }
-}
-
-function addComment(event) {
-    // console.log('test');
-    event.preventDefault();
-    let comments = document.getElementById('list');
-    let commentText = document.getElementById('comment-input').value;
-    let comment = document.createElement('li');
-    comment.innerText = commentText
-
-    comments.appendChild(comment)
+    likeList = document.getElementById('likes');
+    console.log(likeList);
+    likeList.appendChild(like);
 }

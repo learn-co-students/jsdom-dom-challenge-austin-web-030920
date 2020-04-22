@@ -67,10 +67,9 @@ function addLike(event) {
 }
 
 function addComment(event) {
-    // console.log('test');
     event.preventDefault();
     let comments = document.getElementById('list');
-    let commentText = document.getElementById('comment-input').value;
+    let commentText = document.getElementById('comment-input');
     let comment = document.createElement('li');
     comment.innerText = commentText
 

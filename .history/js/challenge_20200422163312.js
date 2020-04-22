@@ -4,13 +4,11 @@ const plus = document.getElementById('plus');
 const heart = document.getElementById('heart');
 const counter = document.getElementById('counter');
 const likes = document.getElementById('likes')
-const subComment = document.getElementById('comment-form');
 const allLikes = [];
 
 document.addEventListener("DOMContentLoaded", () => {
     // your code here
     timer = setInterval(incrementCounter, 1000);
-    subComment.addEventListener('submit', addComment);
 });
 
 function incrementCounter() {
@@ -52,27 +50,27 @@ function decrementTimer(event) {
 
 
 function addLike(event) {
-    allLikes.push(counter.innerText);
-    let qtyLikes = allLikes.filter(num => num === counter.innerText).length; 
+    // let likeCounter = 0
+    let likedNum = counter.innerText
+    console.log(allLikes);
+    allLikes.push(likedNum);
+    let filteredLikes = allLikes.filter(x => x === likedNum).length
+    console.log('bloop');
 
-    if (qtyLikes < 2) {
-        let currentLike = document.createElement('li');
-        currentLike.id = counter.innerText;
-        currentLike.innerText = `${counter.innerText} has been liked ${qtyLikes} times`;
-        likes.appendChild(currentLike);
-    } else {
-        let currentLike = document.getElementById(counter.innerText);
-        currentLike.innerText = `${counter.innerText} has been liked ${qtyLikes} times`;
+
+    if (filteredLikes === 0) {
+        setID = `like${likedNum}`
+        let like = document.createElement('li')
+        like.setAttribute(id, setID)
+        // console.log(like.id)
+        like.innerText = `The Number ${likedNum} has been liked ${filteredLikes} time(s)`
+    } else if (filteredLikes !== 0) {
+        let like = document.getElementById(`like${likedNum}`);
+        // console.log(like.id)
+        like.innerText = `The Number ${likedNum} has been liked ${filteredLikes} time(s)`
     }
-}
 
-function addComment(event) {
-    // console.log('test');
-    event.preventDefault();
-    let comments = document.getElementById('list');
-    let commentText = document.getElementById('comment-input').value;
-    let comment = document.createElement('li');
-    comment.innerText = commentText
-
-    comments.appendChild(comment)
+    likeList = document.getElementById('likes');
+    console.log(likeList);
+    likeList.appendChild(like);
 }

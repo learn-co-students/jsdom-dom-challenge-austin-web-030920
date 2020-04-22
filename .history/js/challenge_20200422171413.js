@@ -3,15 +3,15 @@ const minus = document.getElementById('minus');
 const plus = document.getElementById('plus');
 const heart = document.getElementById('heart');
 const counter = document.getElementById('counter');
-const likes = document.getElementById('likes')
-const subComment = document.getElementById('comment-form');
+const likes = document.getElementById('likes')''
+const subComment = document.getElementById('submit');
 const allLikes = [];
 
 document.addEventListener("DOMContentLoaded", () => {
     // your code here
     timer = setInterval(incrementCounter, 1000);
-    subComment.addEventListener('submit', addComment);
-});
+subComment.addEventListener('click', addComment);
+};
 
 function incrementCounter() {
     counter.innerText++;
@@ -67,12 +67,6 @@ function addLike(event) {
 }
 
 function addComment(event) {
-    // console.log('test');
-    event.preventDefault();
-    let comments = document.getElementById('list');
-    let commentText = document.getElementById('comment-input').value;
-    let comment = document.createElement('li');
-    comment.innerText = commentText
-
-    comments.appendChild(comment)
+    event.preventDefault
+    console.log(event.target)
 }
