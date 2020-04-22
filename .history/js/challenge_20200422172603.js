@@ -4,7 +4,7 @@ const plus = document.getElementById('plus');
 const heart = document.getElementById('heart');
 const counter = document.getElementById('counter');
 const likes = document.getElementById('likes')
-const subComment = document.getElementById('comment-form');
+const subComment = document.getElementById('submit');
 const allLikes = [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -67,10 +67,9 @@ function addLike(event) {
 }
 
 function addComment(event) {
-    // console.log('test');
     event.preventDefault();
     let comments = document.getElementById('list');
-    let commentText = document.getElementById('comment-input').value;
+    let commentText = document.getElementById('comment-input');
     let comment = document.createElement('li');
     comment.innerText = commentText
 
